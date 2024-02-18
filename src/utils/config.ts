@@ -33,7 +33,7 @@ const configParsers = {
   },
   locale(locale?: string) {
     if (!locale) {
-      return "zh-CN"
+      return "en"
     }
 
     parseAssert("locale", locale, "Cannot be empty")
