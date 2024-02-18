@@ -17,14 +17,14 @@ import {
 } from "../utils/git.js"
 import { generateCommitMessage } from "../utils/glm.js"
 
-export default async (
+export default async function (
   generate: number | undefined,
   excludeFiles: string[],
   stageAll: boolean,
   commitType: string | undefined,
   rawArgv: string[],
-) =>
-  (async () => {
+) {
+  try {
     intro(bgCyan(black(" aicommits ")))
     await assertGitRepo()
 
@@ -62,22 +62,20 @@ export default async (
 
     const s = spinner()
     s.start("The AI is analyzing your changes")
-    let messages: string[]
-    try {
-      messages = await generateCommitMessage(
-        config.AI_KEY,
-        config.model,
-        config.locale,
-        staged.diff,
-        config.generate,
-        config["max-length"],
-        config.type,
-        config.timeout,
-        config.proxy,
-      )
-    } finally {
-      s.stop("Changes analyzed")
-    }
+
+    const messages = await generateCommitMessage(
+      config.AI_KEY,
+      config.model,
+      config.locale,
+      staged.diff,
+      config.generate,
+      config["max-length"],
+      config.type,
+      config.timeout,
+      config.proxy,
+    )
+
+    s.stop()
 
     if (messages.length === 0) {
       throw new KnownError("No commit messages were generated. Try again.")
@@ -92,7 +90,7 @@ export default async (
 
       if (!confirmed || isCancel(confirmed)) {
         outro("Commit cancelled")
-        return
+        process.exit(0)
       }
     } else {
       const selected = await select({
@@ -102,7 +100,7 @@ export default async (
 
       if (isCancel(selected)) {
         outro("Commit cancelled")
-        return
+        process.exit(0)
       }
 
       message = selected as string
@@ -111,8 +109,10 @@ export default async (
     await execa("git", ["commit", "-m", message, ...rawArgv])
 
     outro(`${green("✔")} Successfully committed!`)
-  })().catch((error) => {
+    process.exit(0)
+  } catch (error: any) {
     outro(`${red("✖")} ${error.message}`)
     handleCliError(error)
     process.exit(1)
-  })
+  }
+}
