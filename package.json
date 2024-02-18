@@ -1,13 +1,19 @@
 {
   "name": "aicommits-glm",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Writes your git commit messages for you with AI",
-  "keywords": ["ai", "git", "commit"],
+  "keywords": [
+    "ai",
+    "git",
+    "commit"
+  ],
   "license": "MIT",
   "repository": "Nutlope/aicommits",
   "author": "Hassan El Mghari (@nutlope)",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "bin": {
     "aicommits": "./dist/cli.mjs",
     "aic": "./dist/cli.mjs"
@@ -40,6 +46,8 @@
     "typescript": "^4.9.5"
   },
   "release": {
-    "branches": ["main"]
+    "branches": [
+      "main"
+    ]
   }
 }

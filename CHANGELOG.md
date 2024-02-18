@@ -1,4 +1,13 @@
-## 0.0.1 (2024-2-18)
+## [0.0.2](https://github.com/Nutlope/aicommits/compare/v0.0.1...v0.0.2) (2024-2-18)
+
+
+### Features
+
+* 增加工作区配置支持及优化配置读取逻辑 ([ffcae05](https://github.com/Nutlope/aicommits/commit/ffcae05cbe4a273954006972c502b6face863e1e))
+
+
+
+## [0.0.1](https://github.com/Nutlope/aicommits/compare/c017ff56007bc04877390e4dd1b533beab0ed5ea...v0.0.1) (2024-2-18)
 
 
 ### Bug Fixes
