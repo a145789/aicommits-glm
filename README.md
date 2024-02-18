@@ -27,7 +27,8 @@
 
    ```sh
    aicommits config set AI_KEY=<your token> -w
-   aicommits config set type=conventional -w
+   aicommits config set type=conventional -w # 该项目下使用 conventional 规范的commit信息
+   aicommits config set locale=zh-CN -w # 该项目下使用中文做为 commit 信息
    ```
    可在工作区生成配置文件，文件项会覆盖全局配置。
    
