@@ -2,20 +2,44 @@
   "name": "aicommits-glm",
   "version": "0.0.1",
   "description": "Writes your git commit messages for you with AI",
-  "keywords": [
-    "ai",
-    "git",
-    "commit"
-  ],
+  "keywords": ["ai", "git", "commit"],
   "license": "MIT",
   "repository": "Nutlope/aicommits",
   "author": "Hassan El Mghari (@nutlope)",
   "type": "module",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "bin": {
     "aicommits": "./dist/cli.mjs",
     "aic": "./dist/cli.mjs"
+  },
+  "scripts": {
+    "build": "pkgroll --minify",
+    "lint": "pnpm run type-check && pnpm dlx @biomejs/biome lint .",
+    "format": "pnpm dlx @biomejs/biome check .",
+    "type-check": "tsc",
+    "release": "pnpm run build && vr release",
+    "aic": "pnpm run build && node ./dist/cli.mjs"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.3",
+    "@clack/prompts": "^0.7.0",
+    "@types/ini": "^1.3.31",
+    "@types/inquirer": "^9.0.3",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/node": "^18.14.2",
+    "@varlet/release": "^0.2.3",
+    "cleye": "^1.3.2",
+    "execa": "^7.0.0",
+    "fs-fixture": "^1.2.0",
+    "https-proxy-agent": "^5.0.1",
+    "ini": "^3.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "kolorist": "^1.7.0",
+    "pkgroll": "^1.9.0",
+    "tsx": "^3.12.3",
+    "typescript": "^4.9.5"
+  },
+  "release": {
+    "branches": ["main"]
   }
 }
