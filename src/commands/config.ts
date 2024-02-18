@@ -8,6 +8,14 @@ export default command(
     name: "config",
 
     parameters: ["<mode>", "<key=value...>"],
+
+    flags: {
+      workspace: {
+        type: Boolean,
+        description: "Set configs for the current workspace",
+        alias: "w",
+      },
+    },
   },
   (argv) => {
     ;(async () => {
@@ -26,6 +34,7 @@ export default command(
       if (mode === "set") {
         await setConfigs(
           keyValues.map((keyValue) => keyValue.split("=") as [string, string]),
+          argv.flags.workspace,
         )
         return
       }

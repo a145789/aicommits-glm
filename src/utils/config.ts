@@ -4,6 +4,7 @@ import fs from "fs/promises"
 import ini from "ini"
 import { KnownError } from "./error.js"
 import { fileExists } from "./fs.js"
+import { cwd } from "process"
 
 const commitTypes = ["", "conventional"] as const
 
@@ -126,22 +127,38 @@ export type ValidConfig = {
 }
 
 const configPath = path.join(os.homedir(), ".aicommits")
+const workSpaceConfigPath = path.join(cwd(), ".aicommits")
 
-const readConfigFile = async (): Promise<RawConfig> => {
+const readConfigFile = async (): Promise<{
+  globConfig: RawConfig
+  workSpaceConfig: RawConfig
+}> => {
   const configExists = await fileExists(configPath)
-  if (!configExists) {
-    return Object.create(null)
+  const workSpaceConfigExists = await fileExists(workSpaceConfigPath)
+
+  let workSpaceConfig: RawConfig = Object.create(null)
+  if (workSpaceConfigExists) {
+    const workSpaceConfigString = await fs.readFile(workSpaceConfigPath, "utf8")
+    workSpaceConfig = ini.parse(workSpaceConfigString)
   }
 
-  const configString = await fs.readFile(configPath, "utf8")
-  return ini.parse(configString)
+  let globConfig: RawConfig = Object.create(null)
+  if (configExists) {
+    const configString = await fs.readFile(configPath, "utf8")
+    globConfig = ini.parse(configString)
+  }
+  return {
+    globConfig,
+    workSpaceConfig,
+  }
 }
 
 export const getConfig = async (
   cliConfig?: RawConfig,
   suppressErrors?: boolean,
 ): Promise<ValidConfig> => {
-  const config = await readConfigFile()
+  const { globConfig, workSpaceConfig } = await readConfigFile()
+  const config = { ...globConfig, ...workSpaceConfig }
   const parsedConfig: Record<string, unknown> = {}
 
   for (const key of Object.keys(configParsers) as ConfigKeys[]) {
@@ -160,8 +177,12 @@ export const getConfig = async (
   return parsedConfig as ValidConfig
 }
 
-export const setConfigs = async (keyValues: [key: string, value: string][]) => {
-  const config = await readConfigFile()
+export const setConfigs = async (
+  keyValues: [key: string, value: string][],
+  isWorkSpace?: boolean,
+) => {
+  const { globConfig, workSpaceConfig } = await readConfigFile()
+  const config = isWorkSpace ? workSpaceConfig : globConfig
 
   for (const [key, value] of keyValues) {
     if (!hasOwn(configParsers, key)) {
@@ -172,5 +193,6 @@ export const setConfigs = async (keyValues: [key: string, value: string][]) => {
     config[key as ConfigKeys] = parsed as any
   }
 
-  await fs.writeFile(configPath, ini.stringify(config), "utf8")
+  const path = isWorkSpace ? workSpaceConfigPath : configPath
+  await fs.writeFile(path, ini.stringify(config), "utf8")
 }
