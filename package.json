@@ -1,6 +1,6 @@
 {
-  "name": "aicommits",
-  "version": "0.0.0-semantic-release",
+  "name": "aicommits-glm",
+  "version": "0.0.0",
   "description": "Writes your git commit messages for you with AI",
   "keywords": ["ai", "git", "commit"],
   "license": "MIT",
@@ -18,7 +18,7 @@
     "format": "pnpm dlx @biomejs/biome check .",
     "type-check": "tsc",
     "prepack": "pnpm build && clean-pkg-json",
-    "release": "pnpm dlx vr release",
+    "release": "pnpm run build && vr release",
     "aic": "pnpm run build && node ./dist/cli.mjs"
   },
   "devDependencies": {
