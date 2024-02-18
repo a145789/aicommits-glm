@@ -1,35 +1,72 @@
+> `fork` 于 [aicommits](https://github.com/Nutlope/aicommits)，使用 [智谱AI · GML4](https://open.bigmodel.cn/) 生成 `git commit message`，大部分 `API` 兼容 [aicommits 文档](https://github.com/a145789/aicommits-glm#usage)。
+
+## 不同
+
+- 使用流程
+   1. Install
+
+      ```sh
+      pnpm add aicommits-glm -g
+      ```
+
+   2. 在 [此处](https://open.bigmodel.cn/usercenter/apikeys) 获取 `智谱AI API Key`
+
+   3. 配置 `API KY`
+
+      ```sh
+      aicommits config set AI_KEY=<your token>
+      ```
+
+- 可配置工作区 `.aicommits`
+   
+   ```sh
+   aicommits config set AI_KEY=<your token>
+   ```
+
+   将会在全局创建 `.aicommits` 文件，用作全局配置。可使用 `-w`
+
+   ```sh
+   aicommits config set AI_KEY=<your token> -w
+   aicommits config set type=conventional -w
+   ```
+   可在工作区生成配置文件，文件项会覆盖全局配置。
+   
+   > **注意！！！谨慎保存你的 AI KEY， 不要把 KEY 写到工作区配置中，一旦上传至远程仓库，很容易造成泄露。**
+   
+---
+
 <div align="center">
   <div>
     <img src=".github/screenshot.png" alt="AI Commits"/>
     <h1 align="center">AI Commits</h1>
   </div>
 	<p>A CLI that writes your git commit messages for you with AI. Never write a commit message again.</p>
-	<a href="https://www.npmjs.com/package/aicommits"><img src="https://img.shields.io/npm/v/aicommits" alt="Current version"></a>
+	<a href="https://www.npmjs.com/package/aicommits-glm"><img src="https://img.shields.io/npm/v/aicommits-glm" alt="Current version"></a>
 </div>
 
 ---
 
-## Setup
+## ~~Setup~~
 
-> The minimum supported version of Node.js is the latest v14. Check your Node.js version with `node --version`.
+> ~~The minimum supported version of Node.js is the latest v14. Check your Node.js version with `node --version`.~~
 
-1. Install _aicommits_:
-
-   ```sh
-   npm install -g aicommits
-   ```
-
-2. Retrieve your API key from [AI](https://platform.openai.com/account/api-keys)
-
-   > Note: If you haven't already, you'll have to create an account and set up billing.
-
-3. Set the key so aicommits can use it:
+1. ~~Install _aicommits_:~~
 
    ```sh
-   aicommits config set OPENAI_KEY=<your token>
+   #npm install -g aicommits
    ```
 
-   This will create a `.aicommits` file in your home directory.
+2. ~~Retrieve your API key from [AI](https://platform.openai.com/account/api-keys)~~
+
+   > ~~Note: If you haven't already, you'll have to create an account and set up billing.~~
+
+3. ~~Set the key so aicommits can use it:~~
+
+   ```sh
+   #aicommits config set OPENAI_KEY=<your token>
+   ```
+
+   ~~This will create a `.aicommits` file in your home directory.~~
 
 ### Upgrading
 
