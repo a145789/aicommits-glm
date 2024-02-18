@@ -19,7 +19,7 @@
    npm install -g aicommits
    ```
 
-2. Retrieve your API key from [OpenAI](https://platform.openai.com/account/api-keys)
+2. Retrieve your API key from [AI](https://platform.openai.com/account/api-keys)
 
    > Note: If you haven't already, you'll have to create an account and set up billing.
 
@@ -169,7 +169,7 @@ aicommits config set OPENAI_KEY=<your-api-key> generate=3 locale=en
 
 Required
 
-The OpenAI API key. You can retrieve it from [OpenAI API Keys page](https://platform.openai.com/account/api-keys).
+The AI API key. You can retrieve it from [AI API Keys page](https://platform.openai.com/account/api-keys).
 
 #### locale
 
@@ -199,13 +199,13 @@ aicommits config set proxy=
 
 Default: `gpt-3.5-turbo`
 
-The Chat Completions (`/v1/chat/completions`) model to use. Consult the list of models available in the [OpenAI Documentation](https://platform.openai.com/docs/models/model-endpoint-compatibility).
+The Chat Completions (`/v1/chat/completions`) model to use. Consult the list of models available in the [AI Documentation](https://platform.openai.com/docs/models/model-endpoint-compatibility).
 
-> Tip: If you have access, try upgrading to [`gpt-4`](https://platform.openai.com/docs/models/gpt-4) for next-level code analysis. It can handle double the input size, but comes at a higher cost. Check out OpenAI's website to learn more.
+> Tip: If you have access, try upgrading to [`gpt-4`](https://platform.openai.com/docs/models/gpt-4) for next-level code analysis. It can handle double the input size, but comes at a higher cost. Check out AI's website to learn more.
 
 #### timeout
 
-The timeout for network requests to the OpenAI API in milliseconds.
+The timeout for network requests to the AI API in milliseconds.
 
 Default: `10000` (10 seconds)
 
@@ -241,7 +241,7 @@ aicommits config set type=
 
 ## How it works
 
-This CLI tool runs `git diff` to grab all your latest code changes, sends them to OpenAI's GPT-3, then returns the AI generated commit message.
+This CLI tool runs `git diff` to grab all your latest code changes, sends them to AI's GPT-3, then returns the AI generated commit message.
 
 Video coming soon where I rebuild it from scratch to show you how to easily build your own CLI tools powered by AI.
 
