@@ -1,4 +1,11 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "prettier.enable": false
+  "prettier.enable": false,
+  "eslint.enable": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }
