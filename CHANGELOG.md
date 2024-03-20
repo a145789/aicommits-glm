@@ -1,3 +1,12 @@
+## [0.0.4](https://github.com/Nutlope/aicommits/compare/v0.0.3...v0.0.4) (2024-3-20)
+
+
+### Features
+
+* **AI assistant:** Enhance commit message generation with advanced rules ([cdfb345](https://github.com/Nutlope/aicommits/commit/cdfb34530c4d482858c797072164ded56f26cf59))
+
+
+
 ## [0.0.3](https://github.com/Nutlope/aicommits/compare/v0.0.2...v0.0.3) (2024-2-18)
 
 
