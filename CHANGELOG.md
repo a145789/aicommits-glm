@@ -1,3 +1,12 @@
+## [0.0.5](https://github.com/Nutlope/aicommits/compare/v0.0.4...v0.0.5) (2024-3-21)
+
+
+### Performance Improvements
+
+* Adjust generation params for better commit message quality ([bc536b3](https://github.com/Nutlope/aicommits/commit/bc536b3b82c8278fc81299901305fa75c5d0c9fc))
+
+
+
 ## [0.0.4](https://github.com/Nutlope/aicommits/compare/v0.0.3...v0.0.4) (2024-3-20)
 
 
