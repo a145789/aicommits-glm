@@ -1,3 +1,12 @@
+## [0.0.6](https://github.com/Nutlope/aicommits/compare/v0.0.5...v0.0.6) (2024-3-29)
+
+
+### Performance Improvements
+
+* Increase top_p in generateCommitMessage for more diverse responses ([65e11ff](https://github.com/Nutlope/aicommits/commit/65e11ff2c304d76432abc45ccdc6e72c29e5756d))
+
+
+
 ## [0.0.5](https://github.com/Nutlope/aicommits/compare/v0.0.4...v0.0.5) (2024-3-21)
 
 

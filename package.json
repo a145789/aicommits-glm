@@ -1,6 +1,6 @@
 {
   "name": "aicommits-glm",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Writes your git commit messages for you with AI",
   "keywords": [
     "ai",
